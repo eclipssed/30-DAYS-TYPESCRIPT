@@ -5,5 +5,5 @@ function createHelloWorld() {
     };
 };
 
-const sayHello = createHelloWorld()
-console.log(sayHello("Ali"))
+const sayHello = createHelloWorld() 
+sayHello() // Hello World
