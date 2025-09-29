@@ -2,14 +2,15 @@ type Fn = (...args: any[]) => Promise<any>;
 
 function timeLimit(fn: Fn, t: number): Fn {
   return async function (...args) {
-    await Promise.race([
-      new Promise((res) => {
-        res(fn(...args));
+    return await Promise.race([
+      new Promise((resolve) => {
+        const res = (fn(...args));
+        resolve(res);
       }),
 
       new Promise((_, rej) => {
         setTimeout(() => {
-          rej("Time limit Exceeded.");
+          rej("Time Limit Exceeded");
         }, t);
       }),
     ]);
