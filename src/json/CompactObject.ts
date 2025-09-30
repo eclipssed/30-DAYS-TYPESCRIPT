@@ -16,7 +16,8 @@ function compactObject(obj: Obj): Obj {
     const result: Record<string, JSONValue> = {};
     Object.entries(obj).forEach(([key, value]) => {
       if (value) {
-        result[key] = typeof value === "object" ? compactObject(value) : value;
+        result[key] =
+          typeof value === "object" ? compactObject(value as Obj) : value;
       }
     });
     return result;
